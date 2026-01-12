@@ -396,8 +396,8 @@ def main():
         pass
     
     # Stop acoustic system
-    if ACOUSTIC_AVAILABLE and acoustic:
-        acoustic.acoustic_system.stop()
+    if ACOUSTIC_AVAILABLE and acoustic and acoustic.enabled:
+        acoustic.simple_loopback.stop()
 
     pygame.quit()
     sys.exit()
