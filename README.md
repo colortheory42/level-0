@@ -4,7 +4,7 @@ A procedurally generated 3D horror game engine built entirely in Python with Pyg
 
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
 ![Pygame](https://img.shields.io/badge/pygame-2.0+-green.svg)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
 
 ## 🎮 Features
 
