@@ -1,32 +1,41 @@
 # THE BACKROOMS
 
-A procedurally generated 3D horror game engine built entirely in Python with Pygame. Features destructible environments, realistic debris physics, VHS camcorder aesthetics, and spatial audio.
+A continuous, walking-only procedural 3D environment built entirely in Python with Pygame.
+
+Inspired by the Backrooms, this project prioritizes spatial consistency, physical presence, and persistence over scripted events or objectives.
 
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
 ![Pygame](https://img.shields.io/badge/pygame-2.0+-green.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
+## What This Is
 
-## 🎮 Features
+**There are no monsters, objectives, or win conditions.**
 
-### Core Gameplay
-- **Infinite Procedural Generation**: Explore endlessly generating Backrooms with consistent seed-based generation
-- **Destructible Environments**: Progressive wall damage system with pixel-perfect debris physics
-- **First-Person Movement**: Smooth camera controls with walking, running, crouching, and jumping
-- **VHS Aesthetic**: Authentic found-footage visual style with subtle effects
+The experience is defined entirely by movement, collision, and your interaction with the space. You walk. The space resists. Nothing explains itself. Nothing stops you.
 
-### Technical Highlights
+This is not a game engine showcase—though it happens to demonstrate custom 3D rendering, physics, and procedural generation. It's a place you can enter.
+
+## 🎮 Core Features
+
+### Spatial Presence
+- **Unbounded Procedural Space**: The environment has no predefined size or map. Space is revealed only through movement, and traversal is limited strictly to walking.
+- **Seed-Based Consistency**: The same seed generates the same space, always. Return to where you've been.
+- **Physical Collision**: Walls stop you. Movement has weight. The space resists in consistent ways.
+- **Progressive Destruction**: Walls don't just disappear—they crack, lean, and fall. Debris accumulates where it lands.
+
+### Technical Implementation
 - **Custom 3D Engine**: Built from mathematical first principles using only Pygame and NumPy
-- **Advanced Physics**: Realistic debris with gravity, collision, and settling behaviors
 - **Precision Collision**: Circle-vs-segment collision with sliding response for smooth movement
-- **Spatial Audio**: Directional sound with stereo panning based on player orientation
-- **Save/Load System**: Persistent game state with multiple save slots
-- **Voice Echo System**: Optional microphone loopback for atmospheric voice effects
+- **Debris Physics**: Realistic gravity, collision detection, and settling behaviors
+- **Persistent State**: Save and return. Destroyed walls stay destroyed.
+- **Spatial Audio**: Directional sound with stereo panning based on orientation
 
-### World Generation
-- **Procedural Zones**: Different zone types (normal, dense, sparse, maze, open) with unique characteristics
-- **Smart Hallways**: Automatic doorway and corridor generation for navigable spaces
-- **Pillar Variation**: Configurable pillar density modes from none to fully dense
-- **Structural Physics**: Walls crack, lean, and fall realistically when destroyed
+### Atmospheric Details
+- **Procedural Zones**: Different areas have different characteristics (density, openness, ceiling height)
+- **Found-Footage Aesthetic**: Subtle VHS-style visual treatment
+- **Procedural Sound**: All audio generated at runtime—footsteps, ambient hum, destruction
+- **Voice Echo System**: Optional microphone loopback for atmospheric presence
 
 ## 📋 Requirements
 
@@ -35,8 +44,7 @@ A procedurally generated 3D horror game engine built entirely in Python with Pyg
 pip install pygame numpy
 ```
 
-### Optional Dependencies
-For voice echo features:
+### Optional (for voice echo)
 ```bash
 pip install sounddevice  # Recommended
 # OR
@@ -56,10 +64,12 @@ cd the-backrooms
 pip install -r requirements.txt
 ```
 
-3. **Run the game**
+3. **Run**
 ```bash
 python main.py
 ```
+
+Press ENTER to enter. Press ESC to pause or leave.
 
 ## 🎮 Controls
 
@@ -71,24 +81,23 @@ python main.py
 - **M**: Toggle mouse look
 - **J/L**: Turn left/right (when mouse look is off)
 
-### Destruction
+### Interaction
 - **LEFT CLICK** or **E**: Damage/destroy wall (aim at center)
-- Walls take multiple hits and show progressive damage
-- Watch debris accumulate on the floor!
+- Walls crack before breaking. Debris falls and settles.
 
 ### System
 - **H**: Toggle help overlay
 - **R**: Toggle performance mode (render scale)
-- **ESC**: Pause game
+- **ESC**: Pause
 - **N**: Toggle voice loopback (requires microphone)
 
-### Save/Load
+### Persistence
 - **F5**: Quick save to slot 1
 - **F9**: Quick load from slot 1
 
 ## 🏗️ Architecture
 
-The engine follows a clean modular architecture:
+The codebase follows clean modular separation:
 
 ```
 main.py              # Game loop and state management
@@ -130,7 +139,7 @@ engine.py            # Main orchestrator
 
 ## ⚙️ Configuration
 
-Edit `config.py` to customize:
+Edit `config.py` to customize the space:
 
 ```python
 # Display
@@ -184,13 +193,8 @@ All sounds are procedurally generated at runtime:
 ### Voice Echo System
 Optional microphone loopback with spatial audio:
 ```bash
-# Install sounddevice (recommended)
 pip install sounddevice
-
-# Or pyaudio
-pip install pyaudio
 ```
-
 Press **N** in-game to toggle voice loopback.
 
 ## 💾 Save System
@@ -202,15 +206,17 @@ Saves are stored in JSON format in the `backrooms_saves/` directory:
 
 ## 🎯 Design Philosophy
 
-This engine is built on several core principles:
+This project is built on several core principles:
 
 1. **Build from First Principles**: Everything is constructed from mathematical foundations rather than using high-level frameworks
 
 2. **Emergent Behavior**: Simple rules create complex, realistic behavior (debris physics, procedural generation)
 
-3. **Performance Through Simplicity**: Efficient algorithms over brute force (spatial partitioning, near-plane clipping)
+3. **Spatial Honesty**: The space doesn't lie. Collision is consistent. Physics is predictable. Seeds are deterministic.
 
 4. **Durable Architecture**: Clean separation of concerns makes the codebase maintainable and extensible
+
+**The absence is intentional.** No monsters, no objectives, no narrative. The experience is walking, collision, space, and the player's own relationship to those elements.
 
 ## 🐛 Troubleshooting
 
@@ -238,27 +244,29 @@ pip install pyaudio
 - Check `player_radius` in collision system (default: 15.0)
 - Verify `PILLAR_SIZE` doesn't exceed `PILLAR_SPACING`
 
-## 🚧 Future Enhancements
+## 🚧 Possible Future Experiments
 
-Planned features:
-- [ ] Full raycast-based acoustic system
-- [ ] Dynamic lighting with shadows
-- [ ] Entities and NPCs
-- [ ] Multiple floor levels
-- [ ] Procedural textures
-- [ ] Network multiplayer
+These features may or may not be added. Some could compromise the core experience:
+
+- Raycast-based acoustic simulation
+- Dynamic lighting with shadows
+- Multiple floor levels
+- Procedural textures
+- Network multiplayer
+
+**Note**: Entities, NPCs, and traditional game objectives are intentionally absent and unlikely to be added.
 
 ## 📝 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 🙏 Acknowledgments
+## 🙏 Technical Foundation
 
 Built with:
 - Python 3.8+
 - Pygame for rendering
-- NumPy for math operations
-- Mathematical foundations in 3D graphics
+- NumPy for mathematics
+- Custom 3D projection from first principles
 - Inspired by the Backrooms creepypasta
 
 ## 📧 Contact
@@ -267,6 +275,6 @@ For questions, suggestions, or bug reports, please open an issue on GitHub.
 
 ---
 
-**Made with mathematical precision and creative chaos** 🎮
+**Built from mathematical precision. Experienced through walking.**
 
-*"In the Backrooms, every wall is temporary."*
+*In the Backrooms, every wall is temporary. Every step is yours.*
